@@ -9,24 +9,30 @@ public class UIController : MonoBehaviour {
 	[SerializeField] private AudioSource audio2;
 	[SerializeField] private GameObject audiosource1;
 	[SerializeField] private GameObject audiosource2;
+	UnityMidi.MidiPlayer2 midiscript;
 	AddAudioDimention script;
 
 
 	//Audio1,2それぞれでStart・Stopが押されたときの挙動
 	public void onAudio1PlayClick(){
-		audio1.Play ();
+		//おんげんからMidiPlayerスクリプトを取得
+		midiscript = audiosource1.GetComponent<UnityMidi.MidiPlayer2> ();
+		midiscript.LoadAndPlay ();
 	}
 
 	public void onAudio1StopClick(){
-		audio1.Stop ();
+		midiscript = audiosource1.GetComponent<UnityMidi.MidiPlayer2> ();
+		midiscript.Stop ();
 	}
 
 	public void onAudio2PlayClick(){
-		audio2.Play ();
+		midiscript = audiosource2.GetComponent<UnityMidi.MidiPlayer2> ();
+		midiscript.LoadAndPlay ();
 	}
 
 	public void onAudio2StopClick(){
-		audio2.Stop();
+		midiscript = audiosource2.GetComponent<UnityMidi.MidiPlayer2> ();
+		midiscript.Stop ();
 	}
 		
 	//Audio1,2それぞれのmarkidが変わった時の挙動

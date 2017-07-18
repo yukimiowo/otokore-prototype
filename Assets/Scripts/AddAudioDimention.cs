@@ -18,23 +18,14 @@ public class AddAudioDimention : MonoBehaviour {
 	private int lineend = 0;
 
 	public AudioSource AudioSource;
+	//MIDIをいじる用
+	UnityMidi.MidiPlayer2 midiscript;
 
 
 	// Use this for initialization
 	void Start () {
 
-		// ただ1回ファイルを読み込みたいだけならここ 
-//		csvFile = Resources.Load ("CSV/" + filename + audioname) as TextAsset;
-//		StringReader reader = new StringReader (csvFile.text);
-//
-//		//行がなくなるまでおこなう
-//		while(reader.Peek() > -1) {
-//		string line = reader.ReadLine ();
-//		posdata.Add (line.Split (','));
-//			}
-//
-//		this.transform.position = new Vector3 (float.Parse (posdata [0] [0]), float.Parse (posdata [0] [1]), float.Parse (posdata [0] [2]));
-
+		midiscript = this.GetComponent<UnityMidi.MidiPlayer2>();
 		StartCoroutine ("PositionLoad");
 	}
 	
@@ -73,11 +64,18 @@ public class AddAudioDimention : MonoBehaviour {
 			}
 
 			if(linenum == lineend){
-				AudioSource.mute = true;
+				//ミュート作業
+				//MidiPlayer2.csにあるMute()を呼び出す
+				midiscript.Mute ();
+				//AudioSource.mute = true;
 				Debug.Log ("mute");
 			} else{
 				//音を鳴らし始める
-				AudioSource.mute = false;
+				//MidiPlayer2.csにあるUnMute()を呼び出す
+				midiscript.UnMute();
+				Debug.Log ("unmute");
+				//AudioSource.mute = false;
+
 				this.transform.position = new Vector3 (float.Parse (posdata [linenum] [1]), float.Parse (posdata [linenum] [2]), float.Parse (posdata [linenum] [3]));
 				//音のぶれ確認用↓
 	//			var x = 5 * Mathf.Sin(Time.time);
@@ -89,7 +87,7 @@ public class AddAudioDimention : MonoBehaviour {
 		}
 	}
 
-	/* サーバにアクセスするようにするにはきっとこんな感じ */
+	/* サーバにアクセスする用 */
 	
 /*	private TextAsset csvFile;
 	
@@ -102,9 +100,14 @@ public class AddAudioDimention : MonoBehaviour {
 	private int linenum = 0;
 	private bool lineflag = false;
 
+	//MIDIをいじる用
+	UnityMidi.MidiPlayer2 midiscript;
+
+
 	// Use this for initialization
 	void Start () {
-
+		
+		midiscript = this.GetComponent<UnityMidi.MidiPlayer2>();
 		StartCoroutine ("PositionLoad");
 	}
 
@@ -149,10 +152,16 @@ public class AddAudioDimention : MonoBehaviour {
 
 				//idの行がなかったら音をストップする
 				if(linenum == lineend){
-					AudioSource.mute = true;
+					//ミュート作業
+					//MidiPlayer2.csにあるMute()を呼び出す
+					midiscript.Mute ();
 					Debug.Log("mute");
 				} else{
-					AudioSource.mute = false;
+					//音を鳴らし始める
+					//MidiPlayer2.csにあるUnMute()を呼び出す
+					midiscript.UnMute();
+					Debug.Log ("unmute");
+
 	                this.transform.position = new Vector3(float.Parse(posdata[linenum][1]), float.Parse(posdata[linenum][2]), float.Parse(posdata[linenum][3]));
 
 					//指定されたところまで滑らかに動けるようにする

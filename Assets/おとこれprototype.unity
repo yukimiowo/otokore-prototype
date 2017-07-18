@@ -1365,7 +1365,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300001, guid: 1dd706bb85d8aef4e83a6229dbd62c36,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 37c9e69911022452a9ebd4ee732ab036, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1536,7 +1536,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1075835903}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d233fccead944f7aa3b16229104ae60, type: 3}
   m_Name: 
@@ -2677,6 +2677,7 @@ GameObject:
   - component: {fileID: 1505718395}
   - component: {fileID: 1505718394}
   - component: {fileID: 1505718400}
+  - component: {fileID: 1505718401}
   m_Layer: 0
   m_Name: AudioSource2
   m_TagString: Untagged
@@ -2859,6 +2860,25 @@ MonoBehaviour:
   near: 1
   far: 10
   disableRfl: 1
+--- !u!114 &1505718401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1505718393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d233fccead944f7aa3b16229104ae60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bankSource:
+    streamingAssetPath: CSharpSynth/GMBank.bank
+  midiSource:
+    streamingAssetPath: ExampleMidis/pathetique-2.mid
+  channel: 2
+  sampleRate: 44100
+  bufferSize: 1024
+  MidiPath: Assets/StreamingAssets/ExampleMidis/pathetique-2.mid
 --- !u!1 &1553964421
 GameObject:
   m_ObjectHideFlags: 0

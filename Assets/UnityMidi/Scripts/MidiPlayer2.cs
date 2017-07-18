@@ -60,6 +60,7 @@ namespace UnityMidi
             {
 				LoadBank(new PatchBank(bankSource));
 				LoadMidi(new MidiFile(midiSource));
+				Debug.Log ("play!");
 
 				Play();
             }
@@ -88,12 +89,32 @@ namespace UnityMidi
         public void Play()
         {
             sequencer.Play();
-            audioSource.Play();
+            audioSource.Play();	//これなくてもplayできちゃうんだが…
         }
 
 		public void Stop(){
 			sequencer.Stop ();
 			audioSource.Stop ();
+		}
+
+		public void LoadAndPlay()
+		{
+			LoadBank(new PatchBank(bankSource));
+			LoadMidi(new MidiFile(midiSource));
+			Debug.Log ("play!");
+
+			Play ();
+		}
+
+		//ミュート
+		public void Mute(){
+			sequencer.MuteAllChannels();
+			Debug.Log ("mute");
+		}
+
+		public void UnMute(){
+			sequencer.UnMuteAllChannels ();
+			Debug.Log ("unmute");
 		}
 
         void OnAudioFilterRead(float[] data, int channel)
