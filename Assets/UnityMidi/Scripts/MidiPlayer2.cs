@@ -31,6 +31,7 @@ namespace UnityMidi
         MidiFileSequencer sequencer;
         int bufferHead;
         float[] currentBuffer;
+		bool stopflag = true;
 
         public AudioSource AudioSource { get { return audioSource; } }
 
@@ -69,6 +70,13 @@ namespace UnityMidi
 			if (Input.GetKey (KeyCode.S)) {
 				Stop ();
 			}
+
+			//曲が終わったのときにもう一度流す
+			if (!stopflag && !sequencer.IsPlaying) {
+				Debug.Log ("Loop " + stopflag + " " + sequencer.IsPlaying);
+				Play ();
+			}
+
         }
 
         public void LoadBank(PatchBank bank)	//一度bankを読み込み直す
@@ -90,11 +98,13 @@ namespace UnityMidi
         {
             sequencer.Play();
             audioSource.Play();	//これなくてもplayできちゃうんだが…
+			stopflag = false;
         }
 
 		public void Stop(){
 			sequencer.Stop ();
 			audioSource.Stop ();
+			stopflag = true;
 		}
 
 		public void LoadAndPlay()
@@ -109,20 +119,22 @@ namespace UnityMidi
 		//ミュート
 		public void Mute(){
 			sequencer.MuteAllChannels();
-			Debug.Log ("mute");
 		}
 
 		public void UnMute(){
 			sequencer.UnMuteAllChannels ();
-			Debug.Log ("unmute");
 		}
 
+		//こいつはこいつで勝手に呼び出されるっぽい
+		//Mainとは別スレッド
         void OnAudioFilterRead(float[] data, int channel)
         {
             Debug.Assert(this.channel == channel);
             int count = 0;
+			//データの長さになるまでまわしてるので、データがなくなったら最初に戻せばいいのでは？
             while (count < data.Length)
             {
+				//このif文で何をしてるのか
                 if (currentBuffer == null || bufferHead >= currentBuffer.Length)
                 {
                     sequencer.FillMidiEventQueue();

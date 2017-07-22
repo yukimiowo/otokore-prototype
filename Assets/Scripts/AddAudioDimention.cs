@@ -68,12 +68,12 @@ public class AddAudioDimention : MonoBehaviour {
 				//MidiPlayer2.csにあるMute()を呼び出す
 				midiscript.Mute ();
 				//AudioSource.mute = true;
-				Debug.Log ("mute");
+				//Debug.Log ("mute");
 			} else{
 				//音を鳴らし始める
 				//MidiPlayer2.csにあるUnMute()を呼び出す
 				midiscript.UnMute();
-				Debug.Log ("unmute");
+				//Debug.Log ("unmute");
 				//AudioSource.mute = false;
 
 				this.transform.position = new Vector3 (float.Parse (posdata [linenum] [1]), float.Parse (posdata [linenum] [2]), float.Parse (posdata [linenum] [3]));
@@ -81,7 +81,7 @@ public class AddAudioDimention : MonoBehaviour {
 	//			var x = 5 * Mathf.Sin(Time.time);
 	//			var z = 5 * Mathf.Cos(Time.time);
 	//			transform.position = new Vector3(x, 0.5f, z);
-				Debug.Log (posdata [linenum] [1]);
+				//Debug.Log (posdata [linenum] [1]);
 			}
 			yield return new WaitForSeconds (0.5f);
 		}
