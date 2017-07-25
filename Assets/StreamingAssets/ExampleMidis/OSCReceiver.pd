@@ -1,0 +1,69 @@
+#N canvas 119 69 1308 726 10;
+#X obj 523 37 dumpOSC 5555;
+#X obj 399 100 print;
+#X obj 603 142 sel 1 2 3 4 5;
+#X text 542 248 comment;
+#X obj 602 182 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 630 182 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 658 183 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 683 184 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 710 182 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 484 105 OSCroute /start;
+#X obj 99 46 notein;
+#X floatatom 70 107 5 0 0 0 - - -;
+#X floatatom 112 106 5 0 0 0 - - -;
+#X obj 73 228 pack f f;
+#X obj 99 185 noteout 3;
+#X text 68 79 note velocity channel;
+#X floatatom 159 103 5 0 0 0 - - -;
+#X obj 117 474 seq;
+#X msg 174 347 record;
+#X obj 732 182 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 359 351 stop record;
+#X obj 310 306 t b b;
+#X msg 254 351 write test1.mid;
+#X msg 551 348 stop record;
+#X obj 499 307 t b b;
+#X msg 444 349 write test2.mid;
+#X obj 444 162 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 598 104 OSCroute /write;
+#X obj 71 337 midiformat;
+#X connect 0 0 1 0;
+#X connect 0 0 9 0;
+#X connect 0 0 27 0;
+#X connect 2 0 4 0;
+#X connect 2 1 5 0;
+#X connect 2 2 6 0;
+#X connect 2 3 7 0;
+#X connect 2 4 8 0;
+#X connect 2 5 19 0;
+#X connect 4 0 21 0;
+#X connect 5 0 24 0;
+#X connect 9 0 26 0;
+#X connect 10 0 11 0;
+#X connect 10 1 12 0;
+#X connect 10 2 16 0;
+#X connect 11 0 14 0;
+#X connect 11 0 13 0;
+#X connect 12 0 14 1;
+#X connect 12 0 13 1;
+#X connect 13 0 28 0;
+#X connect 18 0 17 0;
+#X connect 20 0 17 0;
+#X connect 21 0 22 0;
+#X connect 21 1 20 0;
+#X connect 22 0 17 0;
+#X connect 23 0 17 0;
+#X connect 24 0 25 0;
+#X connect 24 1 23 0;
+#X connect 25 0 17 0;
+#X connect 26 0 18 0;
+#X connect 27 0 2 0;
+#X connect 28 0 17 0;
