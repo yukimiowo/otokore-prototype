@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 
 public class AddAudioDimention : MonoBehaviour {
-	private TextAsset csvFile;
+	/*private TextAsset csvFile;
 	private List<string[]> posdata = new List<string[]>();
 	//名前を読み込みたい場所ごとに切り替えられたらいいね　別のスクリプトでファイル名を値として受け渡すのもいいかもね
 	//ためしにGUIでつくってみてもいいかもね A B C とかってマーカの名前を決めて
@@ -85,11 +85,11 @@ public class AddAudioDimention : MonoBehaviour {
 			}
 			yield return new WaitForSeconds (0.5f);
 		}
-	}
+	}*/
 
 	/* サーバにアクセスする用 */
 	
-/*	private TextAsset csvFile;
+	private TextAsset csvFile;
 	
 	string filename = "te";
 	string audioname = "st";
@@ -99,6 +99,7 @@ public class AddAudioDimention : MonoBehaviour {
     public int markid = 0;
 	private int linenum = 0;
 	private bool lineflag = false;
+    private int lineend = 0;
 
 	//MIDIをいじる用
 	UnityMidi.MidiPlayer2 midiscript;
@@ -137,6 +138,7 @@ public class AddAudioDimention : MonoBehaviour {
 
 				linenum = 0;
 				lineend = 0;
+                lineflag = false;
                 //行がなくなるまでおこなう
 				//指定されたidの行を探し出してそれを取得する
 				while (reader.Peek() > -1)
@@ -148,6 +150,7 @@ public class AddAudioDimention : MonoBehaviour {
 					} else if (!lineflag) {
 						linenum++;
 					}
+                    lineend++;
                 }
 
 				//idの行がなかったら音をストップする
@@ -190,7 +193,7 @@ public class AddAudioDimention : MonoBehaviour {
                 break;
             }
         }
-    }*/
+    }
 
 	
 }
