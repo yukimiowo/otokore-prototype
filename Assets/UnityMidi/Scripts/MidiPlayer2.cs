@@ -44,6 +44,9 @@ namespace UnityMidi
 		public void Awake(){
 
 			synthesizer = new Synthesizer(sampleRate, channel, bufferSize, 1);
+			//この2行つかえない
+			LoadBank(new PatchBank(bankSource));
+			synthesizer.SetPrograms (channel);
 			sequencer = new MidiFileSequencer(synthesizer);
 			audioSource = GetComponent<AudioSource>();
 
@@ -65,6 +68,11 @@ namespace UnityMidi
 
 				Play();
             }
+
+//			LoadBank(new PatchBank(bankSource));
+//			synthesizer.SetPrograms (channel);				//中身は変わるけど出てる音同じ
+//			Debug.Log(synthesizer.GetProgram (channel));	//MultiPatch: Piano1, IntervalCount: 10, IntervalType: Key
+//			//program番号には0がはいってる
 
 			//sを押すとストップする
 			if (Input.GetKey (KeyCode.S)) {
@@ -96,9 +104,9 @@ namespace UnityMidi
 
         public void Play()
         {
-            sequencer.Play();
-            audioSource.Play();	//これなくてもplayできちゃうんだが…
-			stopflag = false;
+				sequencer.Play ();
+				audioSource.Play ();	//これなくてもplayできちゃうんだが…
+				stopflag = false;
         }
 
 		public void Stop(){
@@ -109,11 +117,14 @@ namespace UnityMidi
 
 		public void LoadAndPlay()
 		{
-			LoadBank(new PatchBank(bankSource));
-			LoadMidi(new MidiFile(midiSource));
-			Debug.Log ("play!");
+			if (loadOnAwake) {
+				LoadBank (new PatchBank (bankSource));
+				synthesizer.SetPrograms (channel);
+				LoadMidi (new MidiFile (midiSource));
+				Debug.Log ("play!");
 
-			Play ();
+				Play ();
+			}
 		}
 
 		//ミュート

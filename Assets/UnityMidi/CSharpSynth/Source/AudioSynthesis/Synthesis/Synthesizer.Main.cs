@@ -235,6 +235,16 @@ namespace AudioSynthesis.Synthesis
             }
             return null;
         }
+
+		//楽器を変える
+		public void SetPrograms(int channel)
+		{
+			if(bank != null){
+				synthChannels [channel].program = 30;
+			}
+
+		}
+
         public void SetAudioChannelCount(int channels)
         {
             channels = SynthHelper.Clamp(channels, 1, 2);

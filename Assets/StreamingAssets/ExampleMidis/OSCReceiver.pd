@@ -34,7 +34,7 @@
 -1 -1;
 #X obj 598 104 OSCroute /write;
 #X obj 71 337 midiformat;
-#X text 542 248;
+#X text 542 248 comment;
 #X msg 749 347 stop record;
 #X obj 697 306 t b b;
 #X msg 943 344 stop record;
@@ -44,6 +44,10 @@
 #X msg 642 348 write test3.mid;
 #X msg 836 345 write test4.mid;
 #X msg 1034 343 write test5.mid;
+#X floatatom 187 183 5 0 0 0 - - -;
+#X floatatom 187 183 5 0 0 0 - - -;
+#X floatatom 156 245 5 0 0 0 - - -;
+#X text 191 245 need?;
 #X connect 0 0 1 0;
 #X connect 0 0 8 0;
 #X connect 0 0 26 0;
@@ -91,3 +95,4 @@
 #X connect 35 0 16 0;
 #X connect 36 0 16 0;
 #X connect 37 0 16 0;
+#X connect 40 0 27 3;

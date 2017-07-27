@@ -5,7 +5,7 @@ using UnityEngine;
 public class OSCController : MonoBehaviour {
 
 	public string serverId = "PureData";
-	public string serverIp = "127.0.0.2";
+	public string serverIp = "127.0.0.1";
 	public int serverPort = 5555;
 
 	public KeyCode startKey = KeyCode.O;
