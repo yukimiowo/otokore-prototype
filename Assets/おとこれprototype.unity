@@ -5366,11 +5366,11 @@ MonoBehaviour:
   bankSource:
     streamingAssetPath: CSharpSynth/GMBank.bank
   midiSource:
-    streamingAssetPath: ExampleMidis/test1.mid
+    streamingAssetPath: ExampleMidis/code.mid
   channel: 2
   sampleRate: 44100
   bufferSize: 1024
-  MidiPath: Assets/StreamingAssets/ExampleMidis/test1.mid
+  MidiPath: Assets/StreamingAssets/ExampleMidis/code.mid
 --- !u!1 &1116725973
 GameObject:
   m_ObjectHideFlags: 0
