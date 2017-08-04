@@ -124,7 +124,7 @@ namespace AudioSynthesis.Sequencer
                 sampleTime = 0;
                 eventIndex = 0;
                 synth.NoteOffAll(true);
-                synth.ResetPrograms();
+                //synth.ResetPrograms();
                 synth.ResetSynthControls();
                 SilentProcess(targetSampleTime);
             }
@@ -139,7 +139,7 @@ namespace AudioSynthesis.Sequencer
                 eventIndex = 0;
                 playing = false;
                 synth.NoteOffAll(true);
-                synth.ResetPrograms();
+                //synth.ResetPrograms();
                 synth.ResetSynthControls();
                 return;
             }

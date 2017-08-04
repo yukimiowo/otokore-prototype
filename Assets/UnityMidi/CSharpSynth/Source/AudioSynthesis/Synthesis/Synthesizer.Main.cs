@@ -237,10 +237,14 @@ namespace AudioSynthesis.Synthesis
         }
 
 		//楽器を変える
-		public void SetPrograms(int channel)
+		public void SetPrograms(byte audioprogram)
 		{
 			if(bank != null){
-				synthChannels [channel].program = 30;
+				for (int x = 0; x < synthChannels.Length; x++)
+				{
+					synthChannels[x].program = audioprogram;	//ここを引数で受け取ることができるようにする
+				}
+				//synthChannels [channel].program = 30;
 			}
 
 		}

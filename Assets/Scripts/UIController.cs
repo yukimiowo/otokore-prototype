@@ -16,6 +16,32 @@ public class UIController : MonoBehaviour {
 	UnityMidi.MidiPlayer2 midiscript;
 	AddAudioDimention script;
 
+	//音色を変えるスライドバーの挙動
+	public void onAudioProgramChange1(float val){
+		midiscript = audiosource1.GetComponent<UnityMidi.MidiPlayer2> ();
+		midiscript.audioprogram = (int)val;
+	}
+
+	public void onAudioProgramChange2(float val){
+		midiscript = audiosource2.GetComponent<UnityMidi.MidiPlayer2> ();
+		midiscript.audioprogram = (int)val;
+	}
+
+	public void onAudioProgramChange3(float val){
+		midiscript = audiosource3.GetComponent<UnityMidi.MidiPlayer2> ();
+		midiscript.audioprogram = (int)val;
+	}
+
+	public void onAudioProgramChange4(float val){
+		midiscript = audiosource4.GetComponent<UnityMidi.MidiPlayer2> ();
+		midiscript.audioprogram = (int)val;
+	}
+
+	public void onAudioProgramChange5(float val){
+		midiscript = audiosource5.GetComponent<UnityMidi.MidiPlayer2> ();
+		midiscript.audioprogram = (int)val;
+	}
+
 
 	//Audio1,2それぞれでStart・Stopが押されたときの挙動
 	public void onAudioPlayClick(GameObject audiosource){

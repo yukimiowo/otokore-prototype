@@ -164,7 +164,7 @@
             int channelList = 0;
             int noteOnCount = 0;
             int totalTime = 0;
-            while (!new string(IOHelper.Read8BitChars(reader, 4)).Equals("MTrk"))
+			while (!new string(IOHelper.Read8BitChars(reader, 4)).Equals("MTrk"))	//ここで4D 54 72 6Bになってるか判断
             {
                 int length = BigEndianHelper.ReadInt32(reader);
                 while (length > 0)
@@ -173,11 +173,11 @@
                     reader.ReadByte();
                 }
             }
-            long endPosition = BigEndianHelper.ReadInt32(reader) + reader.BaseStream.Position;
+            long endPosition = BigEndianHelper.ReadInt32(reader) + reader.BaseStream.Position;	//おわるところの話、ここでサイズ変えられる…！？
             byte prevStatus = 0;
             while (reader.BaseStream.Position < endPosition)
             {
-                int delta = ReadVariableLength(reader);
+                int delta = ReadVariableLength(reader);	//デルタタイム読み込み、ここで最初のデルタタイムだけ0にしたい…
                 totalTime += delta;
                 byte status = reader.ReadByte();
                 if (status >= 0x80 && status <= 0xEF)
@@ -260,7 +260,7 @@
                     return new MetaTextEvent(delta, status, metaStatus, ReadString(reader));
                 case 0x2://copyright
                     return new MetaTextEvent(delta, status, metaStatus, ReadString(reader));
-                case 0x3://trackname
+			case 0x3://tracknameこいつを読みこんだ直後が00じゃなければそこを00に(これでバイト数が1減る可能性あり)、そのあとにc03000とかをいれる
                     return new MetaTextEvent(delta, status, metaStatus, ReadString(reader));
                 case 0x4://inst name
                     return new MetaTextEvent(delta, status, metaStatus, ReadString(reader));

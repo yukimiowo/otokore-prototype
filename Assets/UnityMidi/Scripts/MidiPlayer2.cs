@@ -32,6 +32,7 @@ namespace UnityMidi
         int bufferHead;
         float[] currentBuffer;
 		bool stopflag = true;
+		public int audioprogram = 0;
 
         public AudioSource AudioSource { get { return audioSource; } }
 
@@ -46,7 +47,7 @@ namespace UnityMidi
 			synthesizer = new Synthesizer(sampleRate, channel, bufferSize, 1);
 			//この2行つかえない
 			LoadBank(new PatchBank(bankSource));
-			synthesizer.SetPrograms (channel);
+			//synthesizer.SetPrograms (channel);
 			sequencer = new MidiFileSequencer(synthesizer);
 			audioSource = GetComponent<AudioSource>();
 
@@ -104,6 +105,7 @@ namespace UnityMidi
 
         public void Play()
         {
+				synthesizer.SetPrograms ((byte)audioprogram);
 				sequencer.Play ();
 				audioSource.Play ();	//これなくてもplayできちゃうんだが…
 				stopflag = false;
@@ -119,7 +121,7 @@ namespace UnityMidi
 		{
 			if (loadOnAwake) {
 				LoadBank (new PatchBank (bankSource));
-				synthesizer.SetPrograms (channel);
+				//synthesizer.SetPrograms (channel);
 				LoadMidi (new MidiFile (midiSource));
 				Debug.Log ("play!");
 

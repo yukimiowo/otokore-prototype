@@ -165,7 +165,7 @@
     /// <summary>
     /// Provides support for reading and writing data in big endian format.
     /// </summary>
-    public static class BigEndianHelper
+    public static class BigEndianHelper //writeもできそうだからこれ理解する
     {
         // Integer type helpers
         public static short ReadInt16(byte[] input, int index)
