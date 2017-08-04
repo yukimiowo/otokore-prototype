@@ -43,8 +43,6 @@
 #X msg 642 348 write test3.mid;
 #X msg 836 345 write test4.mid;
 #X msg 1034 343 write test5.mid;
-#X obj 245 155 pgmout;
-#X floatatom 250 87 5 0 0 0 - - -;
 #X obj 99 185 noteout;
 #X connect 0 0 1 0;
 #X connect 0 0 8 0;
@@ -65,9 +63,9 @@
 #X connect 9 1 11 0;
 #X connect 9 2 14 0;
 #X connect 10 0 12 0;
-#X connect 10 0 39 0;
+#X connect 10 0 37 0;
 #X connect 11 0 12 1;
-#X connect 11 0 39 1;
+#X connect 11 0 37 1;
 #X connect 12 0 26 0;
 #X connect 16 0 15 0;
 #X connect 18 0 15 0;
@@ -79,7 +77,6 @@
 #X connect 22 1 21 0;
 #X connect 23 0 15 0;
 #X connect 24 0 16 0;
-#X connect 24 0 38 0;
 #X connect 25 0 2 0;
 #X connect 26 0 15 0;
 #X connect 28 0 15 0;
@@ -94,5 +91,3 @@
 #X connect 34 0 15 0;
 #X connect 35 0 15 0;
 #X connect 36 0 15 0;
-#X connect 38 0 37 0;
-#X connect 38 0 26 3;
